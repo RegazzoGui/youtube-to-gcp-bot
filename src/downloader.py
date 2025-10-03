@@ -22,7 +22,8 @@ def download_video(url: str) -> str:
     ydl_opts = {
         'format': 'best',
         'outtmpl': os.path.join(config.DOWNLOAD_PATH, '%(title)s.%(ext)s'),
-        'noplaylist': True,
+        'noplaylist': False,
+        'dateafter': '20250921'
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -34,5 +35,5 @@ def download_video(url: str) -> str:
         return filename
 
 if __name__ == "__main__":
-    test_url = "https://www.youtube.com/watch?v=R7VpCZZiVOg"
+    test_url = "https://www.youtube.com/playlist?list=PLmrMBkPdETfiGBIN_uZ5hKPrh7P6E3Y_x"
     download_video(test_url)
